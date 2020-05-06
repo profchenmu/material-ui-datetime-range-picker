@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
+// import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
-import {dateTimeFormat, formatIso, isEqualDateTime} from './dateUtils';
+import { dateTimeFormat, formatIso, isEqualDateTime } from './dateUtils';
 import DateRangePickerDialog from './DateRangePickerDialog';
 import SvgIcon from '@material-ui/core/SvgIcon';
 
@@ -290,7 +290,7 @@ class DateRangePicker extends Component {
   }
 
   getTheme() {
-    return this.context.muiTheme || getMuiTheme();
+    return this.context.muiTheme;
   }
 
   UNSAFE_componentWillMount() {
@@ -313,9 +313,9 @@ class DateRangePicker extends Component {
       const newDates = this.getControlledDate(nextProps);
       if (newDates) {
         if (newDates.start && newDates.end && !isEqualDateTime(this.state.startDate, newDates.start) ||
-            !isEqualDateTime(this.state.endDate, newDates.end) ||
-            !isEqualDateTime(this.state.selectedStartDate, newDates.start) ||
-            !isEqualDateTime(this.state.selectedEndDate, newDates.end)) {
+          !isEqualDateTime(this.state.endDate, newDates.end) ||
+          !isEqualDateTime(this.state.selectedStartDate, newDates.start) ||
+          !isEqualDateTime(this.state.selectedEndDate, newDates.end)) {
           this.setState({
             startDate: newDates.start,
             endDate: newDates.end,
@@ -324,7 +324,7 @@ class DateRangePicker extends Component {
           });
         }
       } else if (this.props.value && this.props.value.start && this.props.value.end &&
-          nextProps.value && !nextProps.value.start && !nextProps.value.end) {
+        nextProps.value && !nextProps.value.start && !nextProps.value.end) {
         this.setState({
           dialogStartDate: new Date(),
           dialogEndDate: new Date(),
@@ -518,7 +518,7 @@ class DateRangePicker extends Component {
   };
 
   dropdownArrow = (disabled) => {
-    const {layout} = this.props;
+    const { layout } = this.props;
     const style = {
       fill: (disabled ? '#a2a2a2' : '#757575'),
       width: '10px', height: '6px',
@@ -535,14 +535,14 @@ class DateRangePicker extends Component {
   };
 
   divider() {
-    const {layout} = this.props;
+    const { layout } = this.props;
     return (layout === 'single' &&
-      <span style={{margin: 'auto 10px', color: '#757575'}}>-</span>
+      <span style={{ margin: 'auto 10px', color: '#757575' }}>-</span>
     );
   }
 
   timeStyle(disabled) {
-    const {layout} = this.props;
+    const { layout } = this.props;
     return {
       height: '38px',
       lineHeight: '38px',
@@ -553,15 +553,15 @@ class DateRangePicker extends Component {
       cursor: (disabled ? 'not-allowed' : 'pointer'),
       color: '#757575',
       ...(layout !== 'single' ?
-      {
-        width: '99px',
-        border: '1px solid #e5e5e5',
-      } : {}),
+        {
+          width: '99px',
+          border: '1px solid #e5e5e5',
+        } : {}),
     };
   }
 
   dateStyle(disabled) {
-    const {layout} = this.props;
+    const { layout } = this.props;
     return {
       height: '38px',
       lineHeight: '38px',
@@ -572,15 +572,15 @@ class DateRangePicker extends Component {
       cursor: (disabled ? 'not-allowed' : 'pointer'),
       color: '#757575',
       ...(layout !== 'single' ?
-      {
-        width: '117px',
-        border: '1px solid #e5e5e5',
-      } : {}),
+        {
+          width: '117px',
+          border: '1px solid #e5e5e5',
+        } : {}),
     };
   }
 
   getStyles() {
-    const {layout} = this.props;
+    const { layout } = this.props;
     return {
       textField: {
         display: 'flex',
@@ -592,18 +592,18 @@ class DateRangePicker extends Component {
         display: 'flex',
         justifyContent: 'space-between',
         ...(layout !== 'single' ?
-        {
-          width: '100%',
-        } : {}),
+          {
+            width: '100%',
+          } : {}),
       },
       startContainer: {
         display: 'flex',
         justifyContent: 'space-between',
         ...(layout !== 'single' ?
-        {
-          width: '100%',
-          marginBottom: '16px',
-        } : {}),
+          {
+            width: '100%',
+            marginBottom: '16px',
+          } : {}),
       },
     };
   }
@@ -648,10 +648,10 @@ class DateRangePicker extends Component {
     } = this.props;
 
 
-    const {prepareStyles} = this.getTheme();
+    const { prepareStyles } = this.getTheme();
     const styles = this.getStyles();
 
-    const {selectedStartDate, selectedEndDate, startDate, endDate} = this.state;
+    const { selectedStartDate, selectedEndDate, startDate, endDate } = this.state;
 
     const starting = (selectedStartDate ? selectedStartDate : startDate);
     const ending = (selectedEndDate ? selectedEndDate : endDate);
@@ -663,34 +663,34 @@ class DateRangePicker extends Component {
     const startInfo = {
       dateRef: 'startdatefield',
       onClickDate: this.handleTouchTap.bind(this,
-                                            this.refs.startdatefield,
-                                            'start',
-                                            'date',
-                                            false),
+        this.refs.startdatefield,
+        'start',
+        'date',
+        false),
       formattedDate: formattedStartDate,
       timeRef: 'starttimefield',
       onClickTime: this.handleTouchTap.bind(this,
-                                            this.refs.starttimefield,
-                                            'start',
-                                            'time',
-                                            (formattedStartDate === startLabelDate)),
+        this.refs.starttimefield,
+        'start',
+        'time',
+        (formattedStartDate === startLabelDate)),
       formattedTime: formattedStartTime,
     };
 
     const endInfo = {
       dateRef: 'enddatefield',
       onClickDate: this.handleTouchTap.bind(this,
-                                            this.refs.enddatefield,
-                                            'end',
-                                            'date',
-                                            (formattedStartDate === startLabelDate)),
+        this.refs.enddatefield,
+        'end',
+        'date',
+        (formattedStartDate === startLabelDate)),
       formattedDate: formattedEndDate,
       timeRef: 'endtimefield',
       onClickTime: this.handleTouchTap.bind(this,
-                                            this.refs.endtimefield,
-                                            'end',
-                                            'time',
-                                            (formattedEndDate === endLabelDate)),
+        this.refs.endtimefield,
+        'end',
+        'time',
+        (formattedEndDate === endLabelDate)),
       formattedTime: formattedEndTime,
     };
 
@@ -702,7 +702,7 @@ class DateRangePicker extends Component {
 
           <div style={Object.assign({}, styles.textField, textFieldStyle)}>
             {layout !== 'single' &&
-              <div style={{width: '100%', fontWeight: 'semibold', marginBottom: '5px', fontSize: '15px'}}>Pick Up</div>
+              <div style={{ width: '100%', fontWeight: 'semibold', marginBottom: '5px', fontSize: '15px' }}>Pick Up</div>
             }
             <div style={styles.startContainer}>
               <div
@@ -730,7 +730,7 @@ class DateRangePicker extends Component {
             </div>
             {this.divider()}
             {layout !== 'single' &&
-              <div style={{width: '100%', fontWeight: 'semibold', marginBottom: '5px', fontSize: '15px'}}>Drop Off</div>
+              <div style={{ width: '100%', fontWeight: 'semibold', marginBottom: '5px', fontSize: '15px' }}>Drop Off</div>
             }
             <div style={styles.endContainer}>
               <div
