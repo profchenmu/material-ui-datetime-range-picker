@@ -1,7 +1,7 @@
 {
   "presets": ["./tools/material-ui-babel-preset-es2015", "stage-1", "react"],
   "plugins": [
-    ["transform-replace-object-assign", "simple-assign"],
+    ["transform-replace-object-assign", "simple-assign", "plugin-proposal-export-default-from"],
     "transform-dev-warning"
   ],
   "env": {
@@ -11,7 +11,9 @@
     "release": {
       "plugins": [
         "transform-runtime",
-        ["transform-react-remove-prop-types", {"mode": "wrap"}]
+        ["transform-react-remove-prop-types", {
+          "mode": "wrap"
+        }]
       ]
     }
   }

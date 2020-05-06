@@ -4,7 +4,7 @@
   "author": "JK Slyby",
   "version": "1.0.0",
   "description": "React Datetime Range Picker Component that Implements Google's Material Design Via Material-UI.",
-  "main": "./src/index.js",
+  "main": "./build/index.js",
   "keywords": [
     "react",
     "react-component",
